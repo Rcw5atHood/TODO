@@ -146,7 +146,7 @@ def get_movies_list():
     for movie in jsondata["results"]:
         movie = {
             "title": movie["title"],
-            "overview": movie["overview"],
+           # "overview": movie["overview"], this eliminates the massive wall of text to just movie titles
         }
 
         movie_json.append(movie)
