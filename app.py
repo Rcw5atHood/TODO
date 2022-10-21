@@ -49,7 +49,8 @@ def create():
 
 @app.route('/')
 def RetrieveList():
-    students = StudentModel.query.all()
+    students = StudentModel.query.order_by(StudentModel.last_name).all()
+    print(students)
     return render_template('datalist.html', students=students)
 
 
@@ -104,7 +105,7 @@ def update(id):
         db.session.add(student)
         db.session.commit()
         return redirect('/')
-        return f"Student with id = {id} Does nit exist"
+        return f"Student with id = {id} Does not exist"
 
     return render_template('update.html', student=student)
 
@@ -151,13 +152,9 @@ def get_movies_list():
 
         movie_json.append(movie)
     print(movie_json)
-    return {"movie title": movie_json}
+    return render_template("allmovies.html", titles=movie_json)
+    #return {"movie title": movie_json}
 if __name__ == '__main__':
     app.run(debug=True)
 
 app.run(host='localhost', port=5000)
-
-#app.run(host='localhost', port=5000)
-#https://www.youtube.com/watch?v=I0Zu-Jtp898
-#https://github.com/geoffrey45/flask-request#readme
-#https://www.section.io/engineering-education/integrating-external-apis-with-flask/
