@@ -1,0 +1,19 @@
+#https://www.youtube.com/watch?v=I0Zu-Jtp898
+#https://github.com/geoffrey45/flask-request#readme
+#https://www.section.io/engineering-education/integrating-external-apis-with-flask/ css does not work?
+ <button onclick="alert('Hello Campers')">Random Fact
+
+https://github.com/jesseberliner
+
+https://stackoverflow.com/questions/54701959/sort-dynamically-rendered-table-from-python-flask-in-html-using-javascript
+
+
+
+Parameter n in the sortTable function is the number of the row. And when you render header of your table, you always pass 1. To fix it you can try
+
+{% for key in dict_table[0] %}
+  <th onclick="sortTable({{ loop.index0 }})" style="cursor:crosshair">{{ key }}</th>
+{% endfor %}
+
+
+
