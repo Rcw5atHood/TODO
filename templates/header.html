@@ -2,8 +2,8 @@
 {% extends 'base.html' %}
  
 
-{% block title %} Flask CRUD {% endblock %}
- 
+{% block title %} Fl@sk CRUD {% endblock %}
+ <button onclick="alert('Hello Campers')">Random Fact
  
  
 {% block body %}
@@ -11,7 +11,7 @@
     <div class="container">
 <nav class="navbar navbar-expand-lg navbar-dark " >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Gas Fill Up History</a>
+      <a class="navbar-brand" href="#">Student Contact Roster</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -21,10 +21,13 @@
             <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Vehicle History</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/create">Add Student</a>
+            <a class="nav-link" aria-current="page" href="/create">Add Student</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/">List Students</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/movies">Current Movie List</a>
           </li>
         </ul>
       </div>
@@ -32,15 +35,16 @@
   </nav> 
 </div>
 </div>
-<div class="jumbotron p-3">
+<div class="jumbotron p-4">
     <div class="well text-center">
  
-        <h1>Python Flask CRUD Web Application Development </h1>
+        <h1>Python|Flask|CRUD|API Web Application Development </h1>
  
     </div>
  
  
 </div>
- 
- 
+
+
+
 {% endblock %}
