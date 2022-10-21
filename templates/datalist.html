@@ -16,6 +16,7 @@
         <th>Hobbies</th>
         <th>Country</th>
         <th>Actions</th>
+     <th>Sort List</th>
     </thead>
 
    <tbody>
@@ -35,8 +36,9 @@
     <td>{{student.country}}</td>
     <td> <span style="font-size: 24px;color:green;">
        <a href="/{{student.id}}/edit"> <i class="fas fa-edit"></i></a> </span>
-        | <span style="font-size: 24px;color:red;">  
+        | <span style="font-size: 24px;color:red;">
           <a href="/{{student.id}}/delete"> <i class="fas fa-trash-alt"></i></a></span></td>
+
     {% endfor %}
    </tbody>
  </table>
