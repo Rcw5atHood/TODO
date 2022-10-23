@@ -47,19 +47,28 @@ def create():
         return redirect('/')
 
 
-@app.route('/')
+#@app.route('/')
+#def RetrieveList():
+ #   students = StudentModel.query.order_by(StudentModel.last_name).all()
+  #  print(students)
+   # return render_template('datalist.html', students=students)
+@app.route('/', methods=['GET', 'POST'])
 def RetrieveList():
-    students = StudentModel.query.order_by(StudentModel.last_name).all()
-    print(students)
+    if request.method == 'POST':
+        if request.form.get('AtoZ') == 'Sort By Last Name A to Z':
+            students = StudentModel.query.order_by(StudentModel.last_name).all()
+        elif request.form.get('ZtoA') == 'Z-A':
+            students = StudentModel.query.order_by(StudentModel.last_name.desc()).all()
+    elif request.method == 'GET':
+        students = StudentModel.query.order_by(StudentModel.last_name).all()
     return render_template('datalist.html', students=students)
-
 
 @app.route('/<int:id>')
 def RetrieveStudent(id):
     students = StudentModel.query.filter_by(id=id).first()
     if students:
         return render_template('data.html', students=students)
-    return f"Employee with id ={id} Doenst exist"
+    return f"Employee with id ={id} Doesnt exist"
 
 
 @app.route('/<int:id>/edit', methods=['GET', 'POST'])
