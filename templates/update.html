@@ -37,50 +37,113 @@
         </td>
     </tr>
     <tr>
-        <td>Hobbies</td>
+        <td>Skillset</td>
         <td>
-            Cricket : <input type="checkbox" name="hobbies"  value="cricket" 
-            {% if 'cricket' in student.hobbies %}
+             Python : <input type="checkbox"  name="skillset"  value="Python"
+            {% if 'Python' in student.skillset %}
                checked
             {% endif %}
             >
-            Movies : <input type="checkbox"  name="hobbies"  value="movies"
-            {% if 'movies' in student.hobbies %}
-                checked
-            {% endif %}
-                        >
-            TV : <input type="checkbox"  name="hobbies"  value="tv"
-            {% if 'tv' in student.hobbies %}
+            Java : <input type="checkbox"  name="skillset"  value="Java"
+            {% if 'java' in student.skillset %}
                checked
             {% endif %}
             >
+            C : <input type="checkbox"  name="skillset"  value="C"
+            {% if 'C' in student.skillset %}
+               checked
+            {% endif %}
             >
-            Lax : <input type="checkbox"  name="hobbies"  value="lax"
-            {% if 'lax' in student.hobbies %}
+            C++ : <input type="checkbox"  name="skillset"  value="C++"
+            {% if 'C++' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               C# : <input type="checkbox"  name="skillset"  value="C#"
+            {% if 'C#' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               R : <input type="checkbox"  name="skillset"  value="R"
+            {% if 'R' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Sql : <input type="checkbox"  name="skillset"  value="Sql"
+            {% if 'sql' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               HTML : <input type="checkbox"  name="skillset"  value="HTML"
+            {% if 'HTML' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               CSS : <input type="checkbox"  name="skillset"  value="CSS"
+            {% if 'css' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Linux : <input type="checkbox"  name="skillset"  value="Linux"
+            {% if 'linux' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               OsX : <input type="checkbox"  name="skillset"  value="OSX"
+            {% if 'osx' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Windows : <input type="checkbox"  name="skillset"  value="Windows"
+            {% if 'windows' in student.skillset %}
                checked
             {% endif %}
             >
         </td>
     </tr>
     <tr>
-        <td>Country</td>
+       <td>Focus</td>
         <td>
-        <select name="country" class="form-control">
-            <option value="india"
-            {% if 'india' in student.country %}
+        <select name="focus" class="form-control">
+            <option value="frontend"
+            {% if 'frontend' in student.focus %}
             selected
            {% endif %}
-            >India</option>
-            <option value="usa"
-            {% if 'usa' in student.country %}
+            >Front End</option>
+            <option value="Backend"
+            {% if 'backend' in student.focus %}
               selected
            {% endif %}
-            >USA</option>
-            <option value="australia"
-            {% if 'australia' in student.country %}
+            >Back End</option>
+            <option value="Fullstack"
+            {% if 'Fullstack' in student.focus %}
             selected
           {% endif %}
-            >Australia</option>
+            >Full Stack</option>
+
+             <option value="DB Mmgt"
+            {% if 'DB MMgt' in student.focus %}
+            selected
+          {% endif %}
+            >DB Mmgt</option>
+
+             <option value="Security"
+            {% if 'Security' in student.focus %}
+            selected
+          {% endif %}
+            >Security</option>
+
+             <option value="UI"
+            {% if 'UI' in student.focus %}
+            selected
+          {% endif %}
+            >UI</option>
+
+             <option value="AI"
+            {% if 'aI' in student.focus %}
+            selected
+          {% endif %}
+            >AI</option>
          </select>
         </td>
     </tr>

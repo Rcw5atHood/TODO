@@ -17,3 +17,158 @@ Parameter n in the sortTable function is the number of the row. And when you ren
 
 
 
+line 50 app.py
+@app.route('/')
+def RetrieveList():
+    students = StudentModel.query.order_by(StudentModel.last_name).all()
+    print(students)
+    return render_template('datalist.html', students=students)
+
+
+    20- 23 update.html
+    <tr>
+        <td>Password</td>
+        <td><input type = "password" name = "password" class="form-control" value="{{student.password}}" /></td>
+    </tr>
+
+    28 to 31
+    creatpage.hmtl
+       <tr>
+        <td>Password</td>
+        <td><input type = "password" name = "password" class="form-control" /></td>
+    </tr>
+
+19 to 21  header.html
+<li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">Vehicle History</a>
+          </li>
+          23-25
+  <li class="nav-item">
+            <a class="nav-link" href="/">List Students</a>
+          </li>
+
+
+            <option value="FrontEnd">FrontEnd</option>
+            <option value="BackEnd">BackEnd</option>
+            <option value="FullStack">FullStack</option>
+            <option value="DBMmgt">DBMmgt</option>
+            <option value="Sec">Sec</option>
+            <option value="Ui">Ui</option>
+
+ <td>Focus</td>
+        <td>
+        <select name="focus" class="form-control">
+            <option value="frontend"
+            {% if 'frontend' in student.focus %}
+            selected
+           {% endif %}
+            >Front End</option>
+            <option value="Backend"
+            {% if 'backend' in student.focus %}
+              selected
+           {% endif %}
+            >Back End</option>
+            <option value="fullstack"
+            {% if 'fullstack' in student.focus %}
+            selected
+          {% endif %}
+            >Full Stack</option>
+
+             <option value="DB Mmgt"
+            {% if 'fullstack' in student.focus %}
+            selected
+          {% endif %}
+            >DB Mmgt</option>
+
+             <option value="Sec"
+            {% if 'fullstack' in student.focus %}
+            selected
+          {% endif %}
+            >Sec</option>
+
+             <option value="UI"
+            {% if 'ui' in student.focus %}
+            selected
+          {% endif %}
+            >Ui</option>
+
+             <option value="Ai"
+            {% if 'ai' in student.focus %}
+            selected
+          {% endif %}
+            >Ai</option>
+
+
+
+
+
+
+>update.html line 41
+            Lax : <input type="checkbox"  name="skillset"  value="lax"
+            {% if 'lax' in student.skillset %}
+               checked
+            {% endif %}
+            >
+
+            Python : <input type="checkbox"  name="skillset"  value="python"
+            {% if 'python' in student.skillset %}
+               checked
+            {% endif %}
+
+            >
+            Java : <input type="checkbox"  name="skillset"  value="java"
+            {% if 'java' in student.skillset %}
+               checked
+            {% endif %}
+            >
+
+            C : <input type="checkbox"  name="skillset"  value="c"
+            {% if 'C' in student.skillset %}
+               checked
+            {% endif %}
+            >
+            C++ : <input type="checkbox"  name="skillset"  value="C++"
+            {% if 'C++' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               C# : <input type="checkbox"  name="skillset"  value="C#"
+            {% if 'C#' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               R : <input type="checkbox"  name="skillset"  value="R"
+            {% if 'R' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Sql : <input type="checkbox"  name="skillset"  value="Sql"
+            {% if 'sql' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               HTML : <input type="checkbox"  name="skillset"  value="HTML"
+            {% if 'HTML' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               CSS : <input type="checkbox"  name="skillset"  value="css"
+            {% if 'css' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Linux : <input type="checkbox"  name="skillset"  value="linux"
+            {% if 'linux' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               OsX : <input type="checkbox"  name="skillset"  value="osx"
+            {% if 'osx' in student.skillset %}
+               checked
+            {% endif %}
+            >
+               Windows : <input type="checkbox"  name="skillset"  value="windows"
+            {% if 'windows' in student.skillset %}
+               checked
+            {% endif %}
+            >

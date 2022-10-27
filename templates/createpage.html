@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% include 'header.html' %}
- 
- 
- 
 {% block title %} Home {% endblock %}
- 
- 
- 
 {% block body %}
 <div class="container">
 <form action='' method = "POST">
@@ -39,42 +33,44 @@
     </tr>
 
     <tr>
-        <td>Hobbies</td>
+        <td>SkillSet</td>
         <td>
-            Cricket : <input type="checkbox" name="hobbies"  value="cricket">
-            Lax : <input type="checkbox" name="hobbies"  value="lax">
-            Movies : <input type="checkbox"  name="hobbies"  value="cricket">
-            TV : <input type="checkbox"  name="hobbies"  value="tv">
-            NASCAR : <input type="checkbox" name="hobbies"  value="nascar">
-            Judo : <input type="checkbox" name="hobbies"  value="judo">
+            Python : <input type="checkbox" name="skillset"  value="python">
+            Java : <input type="checkbox" name="skillset"  value="java">
+            C : <input type="checkbox"  name="skillset"  value="C">
+            C++ : <input type="checkbox"  name="skillset"  value="C++">
+            C# : <input type="checkbox" name="skillset"  value="C#">
+            R : <input type="checkbox" name="skillset"  value="R">
+            HTML : <input type="checkbox" name="skillset"  value="html">
+            CSS : <input type="checkbox" name="skillset"  value="css">
+            Linux : <input type="checkbox" name="skillset"  value="linux">
+            OSX : <input type="checkbox" name="skillset"  value="osx">
+            Windows : <input type="checkbox" name="skillset"  value="windows">
         </td>
     </tr>
-
-
-
     <tr>
-        <td>Country</td>
+        <td>Focus</td>
         <td>
-        <select name="country" class="form-control">
-            <option value="india">India</option>
-            <option value="usa">USA</option>
-            <option value="australia">Australia</option>
+        <select name="focus" class="form-control">
+            <option value="FrontEnd">Front End</option>
+            <option value="BackEnd">Back End</option>
+            <option value="FullStack">Full Stack</option>
+            <option value="DBMmgt">DB Mmgt</option>
+            <option value="Security">Security</option>
+            <option value="Ui">Ui</option>
+            <option value="Ai">Ai</option>
          </select>
         </td>
     </tr>
-    
-
     <tr>
         <td colspan="2">
             <input type="submit" name="submit" value="submit" class="btn btn-warning">
         </td>
-       
+
     </tr>
 </table>
-  
+
   </form>
 
 </div>
 {% endblock %}
-
-

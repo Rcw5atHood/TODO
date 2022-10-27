@@ -7,16 +7,19 @@
 
 <div class="container">
  <table class="table">
-     <thead style="background-color: brown;color: aliceblue;">
+   <form action="/" method="POST">
+    <input type="submit" name="AtoZ" value="Sort By Last Name A to Z"></input>
+    <input type="submit" name="ZtoA" value="Sort By Last Name Z to A"></input>
+</form>
+     <thead style="background-color: green;color: ghostwhite;">
         <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Gender</th>
-        <th>Hobbies</th>
-        <th>Country</th>
+        <th>Skill Set</th>
+        <th>Focus</th>
         <th>Actions</th>
-     <th>Sort List</th>
     </thead>
 
    <tbody>
@@ -32,8 +35,8 @@
     <td>{{student.last_name}}</td>
     <td>{{student.email}}</td>
     <td>{{student.gender}}</td>
-    <td>{{student.hobbies}}</td>
-    <td>{{student.country}}</td>
+    <td>{{student.skillset}}</td>
+    <td>{{student.focus}}</td>
     <td> <span style="font-size: 24px;color:green;">
        <a href="/{{student.id}}/edit"> <i class="fas fa-edit"></i></a> </span>
         | <span style="font-size: 24px;color:red;">

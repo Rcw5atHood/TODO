@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from models import db, StudentModel
-import urllib.request, json
+import urllib.request
+import json
 import os
-
 
 app = Flask(__name__)
 
@@ -11,8 +11,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 
+
 @app.before_first_request
 def create_table():
+    #db.drop_all()
     db.create_all()
 
 
@@ -22,76 +24,68 @@ def create():
         return render_template('createpage.html')
 
     if request.method == 'POST':
-        hobby = request.form.getlist('hobbies')
-        # hobbies = ','.join(map(str, hobby))
-        hobbies = ",".join(map(str, hobby)) # this line lets it be comma sep value tv, movie etc
-
+        skillset = request.form.getlist('skillset')
+        skillset = " | ".join(map(str, skillset))
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         email = request.form['email']
         password = request.form['password']
         gender = request.form['gender']
-        hobbies = hobbies
-        country = request.form['country']
+        skillset = skillset
+        focus = request.form['focus']
         students = StudentModel(
             first_name=first_name,
             last_name=last_name,
             email=email,
             password=password,
             gender=gender,
-            hobbies=hobbies,
-            country=country
+            skillset=skillset,
+            focus=focus
         )
         db.session.add(students)
         db.session.commit()
         return redirect('/')
 
 
-@app.route('/')
-def RetrieveList():
-    students = StudentModel.query.order_by(StudentModel.last_name).all()
-    print(students)
+@app.route('/', methods=['GET', 'POST'])
+def retrieveList():
+    global students
+    if request.method == 'POST':
+        if request.form.get('AtoZ') == 'Sort By Last Name A to Z':
+            students = StudentModel.query.order_by(StudentModel.last_name).all()
+        elif request.form.get('ZtoA') == 'Z-A':
+            students = StudentModel.query.order_by(StudentModel.last_name.desc()).all()
+    elif request.method == 'GET':
+        students = StudentModel.query.order_by(StudentModel.last_name).all()
     return render_template('datalist.html', students=students)
 
 
 @app.route('/<int:id>')
-def RetrieveStudent(id):
+def retrieveStudent(id):
     students = StudentModel.query.filter_by(id=id).first()
     if students:
-        return render_template('data.html', students=students)
-    return f"Employee with id ={id} Doenst exist"
+        return render_template('datalist.html', students=students)
+    return f"Employee with id ={id} Doesnt exist"
 
 
 @app.route('/<int:id>/edit', methods=['GET', 'POST'])
 def update(id):
     student = StudentModel.query.filter_by(id=id).first()
 
-    # hobbies = student.hobbies.split(' ')
-    # print(hobbies)
     if request.method == 'POST':
         if student:
             db.session.delete(student)
             db.session.commit()
-        #     tv = request.form['tv']
-        #     if tv is None:
-        #               pass
 
-        #    # print('Form:' + str(request.form))
-
-        #     cricket = request.form['cricket']
-        #     movies = request.form['movies']
-        #     hobbies = tv + ' ' +  cricket + ' ' + movies
-        #     print('H' + hobbies)
-        hobby = request.form.getlist('hobbies')
-        # hobbies = ','.join(map(str, hobby))
-        hobbies = ",".join(map(str, hobby))
+        skillset = request.form.getlist('skillset')
+        skillset = " | ".join(map(str, skillset))
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         email = request.form['email']
         password = request.form['password']
         gender = request.form['gender']
-        hobbies = hobbies
-        country = request.form['country']
+        skillset = skillset
+        focus = request.form['focus']
 
         student = StudentModel(
             first_name=first_name,
@@ -99,13 +93,13 @@ def update(id):
             email=email,
             password=password,
             gender=gender,
-            hobbies=hobbies,
-            country=country
+            skillset=skillset,
+            focus=focus
         )
         db.session.add(student)
         db.session.commit()
         return redirect('/')
-        return f"Student with id = {id} Does not exist"
+        # return f"Student with id = {id} Does not exist"
 
     return render_template('update.html', student=student)
 
@@ -118,7 +112,7 @@ def delete(id):
             db.session.delete(students)
             db.session.commit()
             return redirect('/')
-        #abort(404)
+        # abort(404)
     # return redirect('/')
     return render_template('delete.html')
 
@@ -147,13 +141,15 @@ def get_movies_list():
     for movie in jsondata["results"]:
         movie = {
             "title": movie["title"],
-           # "overview": movie["overview"], this eliminates the massive wall of text to just movie titles
+            # "overview": movie["overview"], this eliminates the massive wall of text to just movie titles
         }
 
         movie_json.append(movie)
     print(movie_json)
     return render_template("allmovies.html", titles=movie_json)
-    #return {"movie title": movie_json}
+    # return {"movie title": movie_json}
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
